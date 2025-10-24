@@ -40,8 +40,8 @@ router.post('/upload-resume', async (req, res) => {
     readableStream.push(null);
 
     const fileMetadata = {
-      name: `Resume_${applicantName}_${new Date().getTime()}.${fileName.split('.').pop()}`,
-      parents: process.env.GOOGLE_DRIVE_FOLDER_ID ? [process.env.GOOGLE_DRIVE_FOLDER_ID] : undefined
+        name: `Resume_${applicantName}_${new Date().toISOString().slice(0, 10)}.${fileName.split('.').pop()}`,
+        parents: process.env.GOOGLE_DRIVE_FOLDER_ID ? [process.env.GOOGLE_DRIVE_FOLDER_ID] : undefined
     };
 
     const getMediaType = (filename) => {
